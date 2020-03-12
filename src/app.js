@@ -8,6 +8,7 @@ import Category from './component/categories/catergories.js';
 import Product from './component/products/products.js';
 
 export default(props)=>{ //this the App compnent
+  console.log(props.action);
   return(
     <>
       <Header/>

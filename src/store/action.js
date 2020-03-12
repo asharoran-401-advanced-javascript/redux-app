@@ -1,6 +1,6 @@
 /* eslint-disable strict */
 'use strict';
-
+// import React from 'react';
 //================================= Initial State for Category & products =============================//
 
 let initialState = {
@@ -10,9 +10,9 @@ let initialState = {
     {name:'glasses' ,displayName: 'summer glasses', description:'nice glasses'},
   ],
   products: [
-    {categoryAssocition:'clothing', name:'zara',description:'cool clothing',price:100,inventoryCount:4},
-    {categoryAssocition:'shoe', name:'nike',description:'cool shoe',price:200,inventoryCount:10},
-    {categoryAssocition:'glasses', name:'R&P',description:'cool glasses',price:50,inventoryCount:3},
+    {categoryAssocition:'zara', name:'clothing',description:'cool clothing',price:100,inventoryCount:4},
+    {categoryAssocition:'nike', name:'shoe',description:'cool shoe',price:200,inventoryCount:10},
+    {categoryAssocition:'R&P', name:'glasses',description:'cool glasses',price:50,inventoryCount:3},
   ],
 
 };
@@ -20,32 +20,34 @@ let initialState = {
 //=================================== Reducrer =====================================//
 
 export default (state = initialState , action) =>{
+  console.log('State' , state);
   let {type , payload} = action;
 
   switch (type) {
-  case 'MAKEREQ':
+  case 'MAKEREQ':{
     let categories = state.categories.map(category =>{
       if(category.name === payload){
-        return ({name : category.name ,
+        return {name : category.name ,
           displayName: category.displayName,
-          description: category.description});
+          description: category.description};
       }
-      return categories;
+      // return categories;
     });
 
     let products = state.products.map( product => {
       if(product.name === payload){
-        return({
+        return{
           categoryAssocition: product.categoryAssocition,
           name: product.name,
           description: product.description,
           price : product.price,
           inventoryCount: product.inventoryCount,
-        });
+        };
       }
       return product;
     });
     return {categories , products}; //return object of two of them
+  }
   case 'RESET':
     return initialState;
   default:
@@ -61,9 +63,6 @@ export const makeReq = (name) => { // return action(object of(type and payload))
     payload: name,
   };
 };
-
-
-
 
 export const reset = () => {
   return{
