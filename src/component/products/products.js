@@ -5,47 +5,33 @@ import { makeReq , reset} from '../../store/action.js';
 
 const Product = (props) => {
   return (
-  // <div>
-  //   {
-  //     props.productAction.products.map( product => {
-  //       return(
-  //         <div>
-  //           <p>{product.categoryAssocition}</p>
-  //           <span>name :</span>
-  //           <p> {product.name}</p>
-  //           <span>description :</span>
-  //           <p>{product.description}</p>
-  //           <span>price :</span>
-  //           <p>{product.price}</p>
-  //           <span> inventory Count :</span>
-  //           <p>{product.inventoryCount}</p>
-  //         </div>
-  //       );
-  //     })
-  //   }
-
-
     <div>
-      <ul className="CategoryList">
-        {props.productAction.map(category => {
-          return (
-            <li onClick={() => props.makeReq(category.name)} key={category.name}>
-              <span>{category.name}</span>
-              <span>displayName :</span>
-              <span> {category.displayName}</span>
+      {
+        props.productState.map( product => {
+          return(
+            <div>
+              <p>{product.categoryAssocition}</p>
+              <span>name :</span>
+              <p> {product.name}</p>
               <span>description :</span>
-              <span>{category.description}</span>
-            </li>
+              <p>{product.description}</p>
+              <span>price :</span>
+              <p>{product.price}</p>
+              <span> inventory Count :</span>
+              <p>{product.inventoryCount}</p>
+            </div>
           );
-        })}
-      </ul>
+        })
+      }
+
+
     </div>
-    // </div>
   );
 };
 
 const mapStateToProps = state => ({
-  productAction : state.action.categories,
+  categoryState : state.action.categories,
+  productState : state.action.products,
 });
 
 const mapDispatchToProps =  { makeReq , reset};

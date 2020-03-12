@@ -7,31 +7,25 @@ import {makeReq , reset} from '../../store/action.js';
 
 const Category = (props) => {
   return(
-    <section className="productResult">
-      <ul>
-        {
-          props.productState.map( product => {
-            return <li onClick={() => props.makeReq(product.name)} key={product.name}>
-              <p>Product Info :</p>
-              <span>{product.categoryAssocition}</span>
-              <span>name :</span>
-              <p> {product.name}</p>
+    <div>
+      <div>
+        {props.categoryState.map(category => {
+          return (
+            <div onClick={() => props.makeReq(category.name)} key={category.name}>
+              <p>{category.name}</p>
+              <span>displayName :</span>
+              <p> {category.displayName}</p>
               <span>description :</span>
-              <p>{product.description}</p>
-              <span>price :</span>
-              <p>{product.price}</p>
-              <span> inventory Count :</span>
-              <p>{product.inventoryCount}</p>
-            </li>;
-          })
-
-        }
-      </ul>
+              <p>{category.description}</p>
+            </div>
+          );
+        })}
+      </div>
       <div>
         <button onClick={props.reset}>Reset
         </button>
       </div>
-    </section>
+    </div>
   );
 };
 

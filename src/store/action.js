@@ -4,6 +4,7 @@
 //================================= Initial State for Category & products =============================//
 
 let initialState = {
+  selectedCategory : '',
   categories : [
     {name:'clothing' ,displayName: 'summer clothing', description:'nice clothing'},
     {name:'shoe' ,displayName: 'summer shoe', description:'nice shoe'},
@@ -25,13 +26,14 @@ export default (state = initialState , action) =>{
 
   switch (type) {
   case 'MAKEREQ':{
+    let selectedCategory = payload;
     let categories = state.categories.map(category =>{
       if(category.name === payload){
         return {name : category.name ,
           displayName: category.displayName,
           description: category.description};
       }
-      // return categories;
+      return categories;
     });
 
     let products = state.products.map( product => {
@@ -46,7 +48,7 @@ export default (state = initialState , action) =>{
       }
       return product;
     });
-    return {categories , products}; //return object of two of them
+    return {categories , products , selectedCategory}; //return object of two of them
   }
   case 'RESET':
     return initialState;
