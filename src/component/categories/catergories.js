@@ -3,7 +3,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import {makeReq , reset} from '../../store/action.js';
+// import {makeReq , reset} from '../../store/action.js';
+import {showDetails , reset} from '../../store/category-action.js';
 
 const Category = (props) => {
   return(
@@ -11,7 +12,7 @@ const Category = (props) => {
       <div>
         {props.categoryState.map(category => {
           return (
-            <div onClick={() => props.makeReq(category.name)} key={category.name}>
+            <div onClick={() => props.showDetails(category.name)} key={category.name}>
               <p>{category.name}</p>
               <span>displayName :</span>
               <p> {category.displayName}</p>
@@ -30,10 +31,10 @@ const Category = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  productState : state.action.products,
-  categoryState : state.action.categories,
+  productState : state.products,
+  categoryState : state.categories,
 });
 
-const mapDispatchToProps = { makeReq , reset};
+const mapDispatchToProps = { showDetails , reset};
 
 export default connect(mapStateToProps , mapDispatchToProps)(Category);

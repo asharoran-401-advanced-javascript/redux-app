@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect} from 'react-redux';
-import { makeReq , reset} from '../../store/action.js';
+// import { makeReq , reset} from '../../store/action.js';
+import {showDetails , reset} from '../../store/product-action.js';
+import {add } from '../../store/cart-action.js';
 
 const Product = (props) => {
   return (
@@ -19,6 +21,7 @@ const Product = (props) => {
               <p>{product.price}</p>
               <span> inventory Count :</span>
               <p>{product.inventoryCount}</p>
+              <button onClick={() => add(product)}>Add to Cart</button>
             </div>
           );
         })
@@ -30,10 +33,11 @@ const Product = (props) => {
 };
 
 const mapStateToProps = state => ({
-  categoryState : state.action.categories,
-  productState : state.action.products,
+  categoryState : state.categories,
+  productState : state.products,
+  cart : state.productSelected,
 });
 
-const mapDispatchToProps =  { makeReq , reset};
+const mapDispatchToProps =  { showDetails , add , reset};
 
 export default connect(mapStateToProps , mapDispatchToProps)(Product);

@@ -8,6 +8,7 @@ import App from './app.js';
 import store from './store/index.js';
 
 function Main(props){
+  console.log('props' , props);
   return(
     <Provider store={store}>
       <App/>
