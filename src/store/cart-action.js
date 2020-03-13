@@ -12,7 +12,10 @@ export default (state = initialState , action) => {
 
   switch (type) {
   case 'ADD':
-    return state.productSelected.push(payload);
+  { let counter = state.counter++;
+    let actualState = state.productSelected.push(payload);
+    return {counter ,actualState};
+  }
   case 'RESET':
     return initialState;
 

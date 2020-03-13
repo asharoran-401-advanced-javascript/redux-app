@@ -15,7 +15,8 @@ export default (state = initialState , action) => {
 
   switch (type) {
   case 'SHOW':{
-    let categories = state.map(catgory => {
+    console.log(state , 'sdfgh');
+    let categories = state.map((catgory , index) => {
       console.log('payload ():' , payload);
       if(catgory.name === payload.name){
         return{

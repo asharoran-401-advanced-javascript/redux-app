@@ -10,9 +10,10 @@ const Category = (props) => {
   return(
     <div>
       <div>
-        {props.categoryState.map(category => {
+        {props.categoryState.map((category , index)=> {
+          console.log('category' , category);
           return (
-            <div onClick={() => props.showDetails(category.name)} key={category.name}>
+            <div onClick={() => props.showDetails(category)} key={index}>
               <p>{category.name}</p>
               <span>displayName :</span>
               <p> {category.displayName}</p>
@@ -23,8 +24,7 @@ const Category = (props) => {
         })}
       </div>
       <div>
-        <button onClick={props.reset}>Reset
-        </button>
+        <button onClick={props.reset}>Reset</button>
       </div>
     </div>
   );
