@@ -5,7 +5,7 @@
 
 ## Resurses :
 
-* (pull request) : [] .
+* (pull request) : [https://github.com/asharoran-401-advanced-javascript/redux-app/pull/1] .
 
 ## SetUp
 
@@ -15,4 +15,4 @@
 - npm run test
 
 ## UML 
-![]()
+![](assets/redux.jpg)
